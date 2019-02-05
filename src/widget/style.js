@@ -23,7 +23,7 @@ export const desktopClosedWrapperStyleChat = {
 };
 
 export const mobileClosedWrapperStyle = {
-    position: 'relative',
+    position: 'fixed',
     bottom: 18,
     right: 18,
     zIndex: 2147483647,
@@ -33,7 +33,7 @@ export const mobileClosedWrapperStyle = {
 };
 
 export const mobileOpenWrapperStyle = {
-    position: 'relative',
+    position: 'fixed',
     top: 0,
     right: 0,
     bottom: 0,
