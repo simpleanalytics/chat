@@ -1,6 +1,6 @@
 
 export const desktopWrapperStyle = {
-    position: 'fixed',
+    position: 'relative',
     bottom: '20px',
     right: '20px',
     zIndex: 2147483647,
@@ -12,7 +12,7 @@ export const desktopWrapperStyle = {
 };
 
 export const desktopClosedWrapperStyleChat = {
-    position: 'fixed',
+    position: 'relative',
     bottom: '0px',
     right: '0px',
     zIndex: 2147483647,
@@ -23,7 +23,7 @@ export const desktopClosedWrapperStyleChat = {
 };
 
 export const mobileClosedWrapperStyle = {
-    position: 'fixed',
+    position: 'relative',
     bottom: 18,
     right: 18,
     zIndex: 2147483647,
@@ -33,7 +33,7 @@ export const mobileClosedWrapperStyle = {
 };
 
 export const mobileOpenWrapperStyle = {
-    position: 'fixed',
+    position: 'relative',
     top: 0,
     right: 0,
     bottom: 0,
