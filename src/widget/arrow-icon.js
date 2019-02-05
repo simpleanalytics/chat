@@ -10,7 +10,7 @@ export default class ArrowIcon extends Component {
                     <svg style={{
                             marginRight: 15,
                             marginTop: 10,
-                            verticalAlign: 'bottom',
+                            verticalAlign: 'sub',
                         }}
                         fill="#FFFFFF" height="15" viewBox="0 0 15 15" width="15"
                         xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +27,7 @@ export default class ArrowIcon extends Component {
                     <svg style={{
                         marginRight: 15,
                         marginTop: 10,
-                        verticalAlign: 'bottom',
+                        verticalAlign: 'sub',
                     }}
                         fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24"
                         xmlns="http://www.w3.org/2000/svg">
