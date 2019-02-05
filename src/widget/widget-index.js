@@ -14,7 +14,7 @@ function injectChat() {
     } else {
         let root = document.createElement('div');
         root.id = 'intergramRoot';
-        document.getElementsByTagName('body')[0].appendChild(root);
+        document.getElementById('intergramPlaceholder').appendChild(root);
         const server = window.intergramServer;
         const iFrameSrc = server + '/chat.html';
         const host = window.location.host || 'unknown-host';
