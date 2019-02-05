@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "description": "A live chat widget linked to your telegram messenger",
   "engines": {
-    "node": "6.9.1",
-    "npm": "3.10.8"
+    "node": "10.x"
   },
   "scripts": {
     "start": "node server.js",
