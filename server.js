@@ -15,8 +15,8 @@ app.post('/hook', function(req, res){
     try {
         const message = req.body.message || req.body.channel_post;
         const chatId = message.chat.id;
-        const name = message.chat.first_name || message.chat.title || "admin";
-        const text = message.text || "";
+        const name = message.chat.first_name || 'Adriaan';
+        const text = message.text || '';
         const reply = message.reply_to_message;
 
         if (text.startsWith("/start")) {
@@ -67,7 +67,6 @@ io.on('connection', function(client){
 });
 
 function sendTelegramMessage(chatId, text, parseMode) {
-    console.log('sendTelegramMessage', chatId, text, parseMode, 'https://api.telegram.org/bot' + process.env.TELEGRAM_TOKEN + '/sendMessage')
     request
         .post('https://api.telegram.org/bot' + process.env.TELEGRAM_TOKEN + '/sendMessage')
         .form({
