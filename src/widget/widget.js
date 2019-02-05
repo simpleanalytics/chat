@@ -4,12 +4,12 @@ import ChatFloatingButton from './chat-floating-button';
 import ChatTitleMsg from './chat-title-msg';
 import ArrowIcon from './arrow-icon';
 import {
-    desktopTitleStyle, 
+    desktopTitleStyle,
     desktopWrapperStyle,
-    mobileOpenWrapperStyle, 
+    mobileOpenWrapperStyle,
     mobileClosedWrapperStyle,
     desktopClosedWrapperStyleChat
-} from "./style";
+} from './style';
 
 export default class Widget extends Component {
 
@@ -31,7 +31,7 @@ export default class Widget extends Component {
             wrapperStyle = { ...mobileClosedWrapperStyle}; // closed mobile floating button
         } else if (!isMobile){
             wrapperStyle = (conf.closedStyle === 'chat' || isChatOpen || this.wasChatOpened()) ?
-                (isChatOpen) ? 
+                (isChatOpen) ?
                     { ...desktopWrapperStyle, ...wrapperWidth} // desktop mode, button style
                     :
                     { ...desktopWrapperStyle}
@@ -42,7 +42,7 @@ export default class Widget extends Component {
         }
 
         return (
-            <div style={wrapperStyle}>
+            <div style={wrapperStyle} data-js="adriaan" class={isMobile ? 'is-mobile' : 'is-desktop'}>
 
                 {/* Open/close button */}
                 { (isMobile || conf.alwaysUseFloatingButton) && !isChatOpen ?
@@ -53,7 +53,7 @@ export default class Widget extends Component {
 
                     (conf.closedStyle === 'chat' || isChatOpen || this.wasChatOpened()) ?
                         <div style={{background: conf.mainColor, ...desktopTitleStyle}} onClick={this.onClick}>
-                            <div style={{display: 'flex', alignItems: 'center', padding: '0px 30px 0px 0px'}}>
+                            <div style={{display: 'flex', alignItems: 'center', padding: '0px 12px 0px 0px'}}>
                                 {isChatOpen ? conf.titleOpen : conf.titleClosed}
                             </div>
                             <ArrowIcon isOpened={isChatOpen}/>
@@ -90,12 +90,12 @@ export default class Widget extends Component {
         let date = new Date();
         let expirationTime = parseInt(this.props.conf.cookieExpiration);
         date.setTime(date.getTime()+(expirationTime*24*60*60*1000));
-        let expires = "; expires="+date.toGMTString();
-        document.cookie = "chatwasopened=1"+expires+"; path=/";
+        let expires = '; expires='+date.toGMTString();
+        document.cookie = 'chatwasopened=1'+expires+'; path=/';
     }
 
     getCookie = () => {
-        var nameEQ = "chatwasopened=";
+        var nameEQ = 'chatwasopened=';
         var ca = document.cookie.split(';');
         for(var i=0;i < ca.length;i++) {
             var c = ca[i];

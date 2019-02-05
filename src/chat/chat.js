@@ -32,18 +32,14 @@ export default class Chat extends Component {
         }
     }
 
-    render({},state) {
+    render({ isMobile }, state) {
         return (
-            <div>
+            <div class={isMobile ? 'is-mobile' : 'is-desktop'}>
                 <MessageArea messages={state.messages} conf={this.props.conf}/>
 
                 <input class="textarea" type="text" placeholder={this.props.conf.placeholderText}
                        ref={(input) => { this.input = input }}
                        onKeyPress={this.handleKeyPress}/>
-
-                <a class="banner" href="https://github.com/idoco/intergram" target="_blank">
-                    Powered by <b>Intergram</b>&nbsp;
-                </a>
             </div>
         );
     }

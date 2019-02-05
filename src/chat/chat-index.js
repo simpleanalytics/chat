@@ -17,6 +17,7 @@ render(
         chatId={getUrlParameter('id')}
         userId={getUserId()}
         host={getUrlParameter('host')}
+        isMobile={getUrlParameter('is_mobile') === 'true'}
         conf={conf}
     />,
     document.getElementById('intergramChat')

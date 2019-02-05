@@ -1,19 +1,10 @@
-
-/* An adaptation of this https://codepen.io/Varo/pen/gbZzgr */
-
-html, body {
-    background: #e5e5e5;
-    font-family: 'Lato', sans-serif;
-    margin: 0 auto;
-}
-
-/* M E S S A G E S */
-
 .chat {
     list-style: none;
     background: none;
-    padding: 0 0 50px 0;
+    padding: 0 0 60px 0;
     margin: 0 0 10px;
+
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .chat li {
@@ -26,6 +17,10 @@ html, body {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+}
+
+.chat li:first-of-type .msg .info {
+    display: block;
 }
 
 .visitor {
@@ -43,37 +38,40 @@ html, body {
 .visitor .msg {
     -webkit-box-ordinal-group: 2;
     -webkit-order: 1;
-        -ms-flex-order: 1;
-            order: 1;
-    border-bottom-right-radius: 0;
-    box-shadow: 1px 2px 0 #D4D4D4;
+    -ms-flex-order: 1;
+    order: 1;
+
+    background-color: #FF4F64;
+    color: white;
 }
 
 .admin .msg {
     -webkit-box-ordinal-group: 2;
     -webkit-order: 1;
-        -ms-flex-order: 1;
-            order: 1;
-    border-top-left-radius: 0;
-    box-shadow: -1px 2px 0 #D4D4D4;
+    -ms-flex-order: 1;
+    order: 1;
+    color: dimgray;
 }
 
 .msg {
     word-wrap: break-word;
-    background: white;
+    background: #f5f5f5;
     min-width: 50px;
     max-width: 80%;
     padding: 10px;
-    border-radius: 2px;
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
+    border-radius: 5px;
+    /* box-shadow: 1px 1px 4px #D8D8D8; */
 }
 
 .msg p {
     margin: 0 0 3.2px 0;
     margin: 0 0 0.2rem 0;
+    line-height: 1.5;
+    font-size: 14px;
 }
 
-.msg .time {
+.msg .time,
+.msg .info {
     font-size: 11.2px;
     font-size: 0.7rem;
     color: #ccc;
@@ -84,6 +82,17 @@ html, body {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+}
+
+.msg .info {
+    display: none;
+    float: left;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.visitor .msg .time {
+    color: #ffafaf;
 }
 
 ::-webkit-scrollbar {
@@ -123,36 +132,27 @@ html, body {
 
 input.textarea {
     position: fixed;
-    bottom: 14px;
+    bottom: 0;
     left: 0;
     right: 0;
     width: 95%;
-    height: 30px;
+    height: 40px;
     z-index: 99;
     background: #fafafa;
     border: none;
     outline: none;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 7px 20px;
     color: #666;
     font-weight: 400;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.33;
+    background-color: #fff;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border-top: 1px solid #e6e6e6;
 }
 
-
-a.banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 12px;
-    z-index: 99;
-    border-top: 2px solid #e5e5e5;
-    background: #e5e5e5;
-    outline: none;
-    color: #777;
-    font-size: 10px;
-    text-align: right;
-    font-weight: 200;
-    text-decoration: none
+.is-mobile input.textarea {
+    bottom: 15px;
 }

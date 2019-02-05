@@ -19,20 +19,25 @@ export default class MessageArea extends Component {
             <ol class="chat">
                 {props.messages.map(({name, text, from, time}) => {
                     if (from === 'visitor') {
-                        name = "You";
+                        name = 'You';
                     }
                     return (
                         <li class={from}>
                             <div class="msg">
                                 <p>{name ? name + ': ' + text : text}</p>
                                 { (props.conf.displayMessageTime) ?
-                                    <div class="time">
-                                        {
-                                            currentTime - new Date(time) < dayInMillis ?
-                                                dateFormat(time, "HH:MM") :
-                                                dateFormat(time, "m/d/yy HH:MM")
-                                        }
-                                    </div> 
+                                    <div>
+                                        <a class="info" href="https://github.com/idoco/intergram" target="_blank">
+                                            via Telegram
+                                        </a>
+                                        <div class="time">
+                                            {
+                                                currentTime - new Date(time) < dayInMillis ?
+                                                    dateFormat(time, 'HH:MM') :
+                                                    dateFormat(time, 'm/d/yy HH:MM')
+                                            }
+                                        </div>
+                                    </div>
                                     :
                                     ''
                                 }

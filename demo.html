@@ -35,13 +35,19 @@
 </div>
 
 <script>
-    window.intergramId = 312940879;
-    window.intergramServer = window.location.origin;
-    window.intergramCustomizations = {
-        closedChatAvatarUrl: 'media/demo_avatar.jpg',
-        introMessage: 'Hello! How can I help you?',
-        closedStyle: 'button', // button or chat
-    };
+    (function(window) {
+        var localTime
+        try {
+            localTime = 'His local time is ' + new Intl.DateTimeFormat([], { timeZone: 'Asia/Bangkok', hour: 'numeric' }).format(new Date()) + '.'
+        } catch (error) {
+            localTime = 'He is in Thailand at the moment.'
+        }
+        window.intergramId = 312940879
+        window.intergramServer = window.location.origin
+        window.intergramCustomizations = {
+            autoResponse: 'Looking for Adriaan (this might take a minute). ' + localTime
+        }
+    })(window)
 </script>
 <script src="/js/widget.js"></script>
 

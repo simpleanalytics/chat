@@ -11,7 +11,7 @@ export default class ChatFrame extends Component {
         let dynamicConf = window.intergramOnOpen || {}; // these configuration are loaded when the chat frame is opened
         let encodedConf = encodeURIComponent(JSON.stringify({...conf, ...dynamicConf}));
         return (
-            <iframe src={iFrameSrc + '?id=' + intergramId + '&host=' + host + '&conf=' + encodedConf }
+            <iframe src={iFrameSrc + '?id=' + intergramId + '&host=' + host + '&conf=' + encodedConf + '&is_mobile=' + isMobile }
                     width='100%'
                     height={isMobile ? '94%' : '100%'}
                     frameborder='0' >
