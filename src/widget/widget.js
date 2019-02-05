@@ -42,7 +42,7 @@ export default class Widget extends Component {
         }
 
         return (
-            <div style={wrapperStyle} data-js="adriaan" class={isMobile ? 'is-mobile' : 'is-desktop'}>
+            <div style={wrapperStyle}>
 
                 {/* Open/close button */}
                 { (isMobile || conf.alwaysUseFloatingButton) && !isChatOpen ?
