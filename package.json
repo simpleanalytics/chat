@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A live chat widget linked to your telegram messenger",
   "engines": {
-    "node": "10.x"
+    "node": "--lts=dubnium"
   },
   "scripts": {
     "start": "node server.js",
