@@ -56,7 +56,7 @@ io.on('connection', function(client){
         client.on('message', function(msg) {
             // console.log('on message', msg)
             messageReceived = true;
-            io.emit(chatId + '-' + userId, msg);
+            if (msg.from !== 'bot') io.emit(chatId + '-' + userId, msg);
             sendTelegramMessage(chatId, `${userId}: ${msg.text}`);
         });
 

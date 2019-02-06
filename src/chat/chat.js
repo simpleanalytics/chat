@@ -47,7 +47,7 @@ export default class Chat extends Component {
 
     handleKeyPress = (e) => {
         if (!this.didSentIsTyping && this.input.value) {
-            this.socket.send({text: 'Started typing', from: 'visitor'})
+            this.socket.send({text: 'Started typing', from: 'bot'})
             this.didSentIsTyping = true
         }
         if (e.keyCode == 13 && this.input.value) {
