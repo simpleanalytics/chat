@@ -51,7 +51,7 @@ io.on('connection', function(client){
         let chatId = registerMsg.chatId;
         let messageReceived = false;
         // console.log('useId ' + userId + ': connected to chatId ' + chatId);
-        sendTelegramMessage(chatId, `${userId}: connected (${registerMsg.ua})`);
+        // sendTelegramMessage(chatId, `${userId}: connected`);
 
         client.on('message', function(msg) {
             // console.log('on message', msg)
