@@ -51,19 +51,19 @@ io.on('connection', function(client){
         let chatId = registerMsg.chatId;
         let messageReceived = false;
         // console.log('useId ' + userId + ': connected to chatId ' + chatId);
-        sendTelegramMessage(chatId, userId + ': connected', registerMsg.ua);
+        sendTelegramMessage(chatId, `${userId}: connected (${registerMsg.ua})`);
 
         client.on('message', function(msg) {
             // console.log('on message', msg)
             messageReceived = true;
             io.emit(chatId + '-' + userId, msg);
-            sendTelegramMessage(chatId, userId + ':' + msg.text);
+            sendTelegramMessage(chatId, `${userId}: ${msg.text}`);
         });
 
         client.on('disconnect', function(){
             // console.log('on disconnect')
             if (messageReceived) {
-                sendTelegramMessage(chatId, userId + ' has left', null, true);
+                sendTelegramMessage(chatId, `${userId} has left`, null, true);
             }
         });
     });
