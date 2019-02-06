@@ -47,7 +47,7 @@ export default class Chat extends Component {
     handleKeyPress = (e) => {
         if (e.keyCode == 13 && this.input.value) {
             let text = this.input.value;
-            this.socket.send({text, from: 'visitor', visitorName: this.props.conf.visitorName});
+            this.socket.send({text, from: 'visitor'});
             this.input.value = '';
 
             if (this.autoResponseState === 'pristine') {
@@ -85,6 +85,7 @@ export default class Chat extends Component {
 
     writeToMessages = (msg) => {
         msg.time = new Date();
+        msg.us = window.navigator.userAgent
         this.setState({
             message: this.state.messages.push(msg)
         });

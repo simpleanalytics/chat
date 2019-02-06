@@ -1,5 +1,5 @@
 const request = require('request');
-const compression = require('compression');
+// const compression = require('compression');
 const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -20,7 +20,7 @@ app.post('/hook', function(req, res){
         const reply = message.reply_to_message;
 
         if (text.startsWith('/start')) {
-            console.log('/start chatId ' + chatId);
+            // console.log('/start chatId ' + chatId);
             sendTelegramMessage(chatId,
                 '*Welcome to Intergram* \n' +
                 'Your unique chat id is `' + chatId + '`\n' +
@@ -43,22 +43,25 @@ app.post('/hook', function(req, res){
 
 // handle chat visitors websocket messages
 io.on('connection', function(client){
+    // console.log('on connection')
 
     client.on('register', function(registerMsg){
+        console.log('on register')
         let userId = registerMsg.userId;
         let chatId = registerMsg.chatId;
         let messageReceived = false;
-        console.log('useId ' + userId + ' connected to chatId ' + chatId);
-        sendTelegramMessage(chatId, userId + ' opened the chat');
+        // console.log('useId ' + userId + ': connected to chatId ' + chatId);
+        sendTelegramMessage(chatId, userId + ': connected');
 
         client.on('message', function(msg) {
+            // console.log('on message', msg)
             messageReceived = true;
             io.emit(chatId + '-' + userId, msg);
-            let visitorName = msg.visitorName ? '[' + msg.visitorName + ']: ' : '';
-            sendTelegramMessage(chatId, userId + ':' + visitorName + ' ' + msg.text);
+            sendTelegramMessage(chatId, userId + ':' + msg.text);
         });
 
         client.on('disconnect', function(){
+            // console.log('on disconnect')
             if (messageReceived) {
                 sendTelegramMessage(chatId, userId + ' has left', null, true);
             }
@@ -92,10 +95,10 @@ app.post('/usage-end', cors(), function(req, res) {
     res.end();
 });
 
-http.listen(process.env.PORT || 3000, function(){
-    console.log('listening on port:' + (process.env.PORT || 3000));
+http.listen(process.env.PORT || 3001, function(){
+    console.log('listening on port:' + (process.env.PORT || 3001));
 });
 
-app.get('/.well-known/acme-challenge/:content', (req, res) => {
-    res.send(process.env.CERTBOT_RESPONSE);
-});
+// app.get('/.well-known/acme-challenge/:content', (req, res) => {
+//     res.send(process.env.CERTBOT_RESPONSE);
+// });
