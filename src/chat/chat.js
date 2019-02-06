@@ -8,6 +8,7 @@ export default class Chat extends Component {
 
     autoResponseState = 'pristine'; // pristine, set or canceled
     autoResponseTimer = 0;
+    didSentIsTyping = false;
 
     constructor(props) {
         super(props);
@@ -45,6 +46,10 @@ export default class Chat extends Component {
     }
 
     handleKeyPress = (e) => {
+        if (!this.didSentIsTyping && this.input.value) {
+            this.socket.send({text: 'Started typing', from: 'visitor'})
+            this.didSentIsTyping = true
+        }
         if (e.keyCode == 13 && this.input.value) {
             let text = this.input.value;
             this.socket.send({text, from: 'visitor'});
