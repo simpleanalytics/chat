@@ -33,7 +33,8 @@ function injectChat() {
         try {
             const request = new XMLHttpRequest();
             request.open('POST', server + '/usage-start?host=' + host);
-            request.send();
+            if (request.overrideMimeType) request.overrideMimeType('text/plain');
+            request.send(null);
         } catch (e) { /* Fail silently */ }
 
     }
