@@ -4,10 +4,10 @@ export const desktopWrapperStyle = {
     bottom: '20px',
     right: '20px',
     zIndex: 2147483647,
-    borderRadius: '6px',
+    borderRadius: '20px',
+    fontWeight: 'bold',
     background: 'rgb(255, 255, 255)',
     boxSizing: 'content-box',
-    boxShadow: 'rgba(203, 203, 203, 0.75) 1px 1px 4px',
     overflow: 'hidden'
 };
 
@@ -54,7 +54,7 @@ export const desktopTitleStyle = {
     justifyContent: 'space-between',
     padding: '5px 0 5px 20px',
     color: '#fff',
-    cursor: 'pointer',
+    cursor: 'pointer'
 };
 
 export const mobileTitleStyle = {
@@ -64,7 +64,5 @@ export const mobileTitleStyle = {
     borderRadius: '50%',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
-    webkitBoxShadow: '1px 1px 4px rgba(203, 203, 203, 0.75)',
-    boxShadow: '1px 1px 4px rgba(203, 203, 203, 0.75)'
+    alignItems: 'center'
 };
