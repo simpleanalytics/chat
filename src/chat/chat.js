@@ -72,7 +72,7 @@ export default class Chat extends Component {
     incomingMessage = (msg) => {
         this.writeToMessages(msg);
         if (msg.from === 'admin') {
-            document.getElementById('messageSound').play();
+            // document.getElementById('messageSound').play();
 
             if (this.autoResponseState === 'pristine') {
                 this.autoResponseState = 'canceled';
