@@ -32,7 +32,7 @@ export default class Widget extends Component {
         } else if (!isMobile){
             wrapperStyle = (conf.closedStyle === 'chat' || isChatOpen || this.wasChatOpened()) ?
                 (isChatOpen) ?
-                    { ...desktopWrapperStyle, ...wrapperWidth, position: 'fixed' } // desktop mode, button style
+                    { ...desktopWrapperStyle, ...wrapperWidth, position: 'fixed', boxShadow: 'rgba(203, 203, 203, 0.75) 1px 1px 4px' } // desktop mode, button style
                     :
                     { ...desktopWrapperStyle}
                 :
