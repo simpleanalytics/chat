@@ -8,8 +8,9 @@ export default class ArrowIcon extends Component {
                 {/* keyboard arrow up */}
                 { (isOpened) ?
                     <svg style={{
-                            marginRight: 15,
-                            verticalAlign: 'sub',
+                            marginRight: 13,
+                            marginTop: 1,
+                            verticalAlign: 'text-top',
                         }}
                         fill="#FFFFFF" height="15" viewBox="0 0 15 15" width="15"
                         xmlns="http://www.w3.org/2000/svg">
