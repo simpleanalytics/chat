@@ -15,9 +15,11 @@ app.post('/hook', function(req, res){
     try {
         const message = req.body.message || req.body.channel_post;
         const chatId = message.chat.id;
-        const name = message.from.first_name || message.chat.first_name || 'Support';
+        let name = message.from.first_name || message.chat.first_name || 'Support';
         const text = message.text || '';
         const reply = message.reply_to_message;
+
+        if (/adriaan/gi.test(name)) name = 'Adriaan'
 
         if (text.startsWith('/start')) {
             // console.log('/start chatId ' + chatId);
