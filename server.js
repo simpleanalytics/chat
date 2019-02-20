@@ -19,8 +19,6 @@ app.post('/hook', function(req, res){
         const text = message.text || '';
         const reply = message.reply_to_message;
 
-        console.log(JSON.stringify(message))
-
         if (text.startsWith('/start')) {
             // console.log('/start chatId ' + chatId);
             sendTelegramMessage(chatId,
