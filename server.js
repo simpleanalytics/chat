@@ -1,5 +1,4 @@
 const request = require('request');
-// const compression = require('compression');
 const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -80,9 +79,14 @@ function sendTelegramMessage(chatId, text, parseMode, disableNotification = fals
     }
     if (parseMode) data.parse_mode = parseMode
 
+    console.log(data)
+
     request
         .post('https://api.telegram.org/bot' + process.env.TELEGRAM_TOKEN + '/sendMessage')
-        .form(data);
+        .form(data)
+        .on('error', function(err) {
+            console.error(err)
+        })
 }
 
 app.post('/usage-start', cors(), function(req, res) {
