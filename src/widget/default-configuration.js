@@ -4,8 +4,8 @@ export const defaultConfiguration = {
     closedStyle: 'button', // button or chat
     closedChatAvatarUrl: '', // only used if closedStyle is set to 'chat'
     cookieExpiration: 1, // in days. Once opened, closed chat title will be shown as button (when closedStyle is set to 'chat')
-    introMessage: 'Hello! How can I help?',
-    introMessageBalloon: 'Hello! How can I help?',
+    introMessage: 'Hello! How can we help?',
+    introMessageBalloon: 'Hello! How can we help?',
     closedChatAvatarUrl: 'https://cdn.simpleanalytics.io/images/adriaan.jpg',
     autoResponse: 'Looking for Adriaan or Şamil (this might take a minute)',
     autoNoResponse: 'It seems that Adriaan and Şamil are not available to answer right now. Please leave your email address so we can ' +
