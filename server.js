@@ -30,11 +30,10 @@ app.post('/hook', function(req, res){
         } else if (reply) {
             let replyText = reply.text || '';
             let userId = replyText.split(':')[0];
-            io.emit(chatId + '-' + userId, {name, text, from: 'admin'});
-        } else if (text){
-            io.emit(chatId, {name, text, from: 'admin'});
+            io.emit(chatId + '-' + userId, { name, text, from: 'admin' });
+        } else if (text) {
+            // io.emit(chatId, {name, text, from: 'admin'});
         }
-
     } catch (e) {
         console.error('hook error', e, req.body);
     }
