@@ -68,7 +68,7 @@ export default class Chat extends Component {
                         text: this.props.conf.autoNoResponse,
                         from: 'admin'});
                     this.autoResponseState = 'canceled';
-                }, 30 * 1000);
+                }, 60 * 1000);
                 this.autoResponseState = 'set';
             }
         }
