@@ -9,6 +9,8 @@ const io = require('socket.io')(http);
 app.use(express.static('dist', {index: 'demo.html', maxage: '4h'}));
 app.use(bodyParser.json());
 
+const sessions = {}
+
 // handle admin Telegram messages
 app.post('/hook', function(req, res){
     try {
@@ -30,7 +32,8 @@ app.post('/hook', function(req, res){
         } else if (reply) {
             let replyText = reply.text || '';
             let userId = replyText.split(':')[0];
-            io.emit(chatId + '-' + userId, { name, text, from: 'admin' });
+            const socketId = sessions[userId]
+            io.to(socketId, chatId + '-' + userId, { name, text, from: 'admin' });
         } else if (text) {
             // io.emit(chatId, {name, text, from: 'admin'});
         }
@@ -41,11 +44,13 @@ app.post('/hook', function(req, res){
     res.end();
 });
 
+console.log('0=> hi')
+
 // handle chat visitors websocket messages
-io.on('connection', function(client){
+io.on('connection', function(socket){
     // console.log('on connection')
 
-    client.on('register', function(registerMsg){
+    socket.on('register', function(registerMsg){
         console.log('on register')
         let userId = registerMsg.userId;
         let chatId = registerMsg.chatId;
@@ -53,18 +58,22 @@ io.on('connection', function(client){
         // console.log('useId ' + userId + ': connected to chatId ' + chatId);
         // sendTelegramMessage(chatId, `${userId}: connected`);
 
-        client.on('message', function(msg) {
+        sessions[userId] = socket.id
+
+        socket.on('message', function(msg) {
             // console.log('on message', msg)
             messageReceived = true;
-            if (msg.from !== 'bot') io.emit(chatId + '-' + userId, msg);
+            // if (msg.from !== 'bot') io.emit(chatId + '-' + userId, msg);
+            if (msg.from !== 'bot') io.to(socket.id).emit(chatId + '-' + userId, msg);
             sendTelegramMessage(chatId, `${userId}: ${msg.text}`);
         });
 
-        client.on('disconnect', function(){
+        socket.on('disconnect', function(){
             // console.log('on disconnect')
             if (messageReceived) {
                 sendTelegramMessage(chatId, `${userId} has left`, null, true);
             }
+            delete sessions[userId]
         });
     });
 
