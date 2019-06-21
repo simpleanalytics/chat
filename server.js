@@ -20,6 +20,8 @@ app.post('/hook', function(req, res){
         const text = message.text || '';
         const reply = message.reply_to_message;
 
+        console.log(JSON.stringify(req.body))
+
         if (/adriaan/gi.test(name)) name = 'Adriaan'
 
         if (text.startsWith('/start')) {
@@ -33,7 +35,7 @@ app.post('/hook', function(req, res){
             let replyText = reply.text || '';
             let userId = replyText.split(':')[0];
             const socketId = sessions[userId]
-            io.to(socketId, chatId + '-' + userId, { name, text, from: 'admin' });
+            io.to(socketId).emit(chatId + '-' + userId, { name, text, from: 'admin' });
         } else if (text) {
             // io.emit(chatId, {name, text, from: 'admin'});
         }
