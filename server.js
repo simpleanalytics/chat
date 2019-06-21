@@ -35,7 +35,10 @@ app.post('/hook', function(req, res){
             let replyText = reply.text || '';
             let userId = replyText.split(':')[0];
             const socketId = sessions[userId]
-            io.to(socketId).emit(chatId + '-' + userId, { name, text, from: 'admin' });
+
+            if (socketId) {
+              io.to(socketId).emit(chatId + '-' + userId, { name, text, from: 'admin' });
+            }
         } else if (text) {
             // io.emit(chatId, {name, text, from: 'admin'});
         }
@@ -45,8 +48,6 @@ app.post('/hook', function(req, res){
     res.statusCode = 200;
     res.end();
 });
-
-console.log('0=> hi')
 
 // handle chat visitors websocket messages
 io.on('connection', function(socket){
