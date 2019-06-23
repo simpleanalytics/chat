@@ -1,4 +1,4 @@
-import { render } from 'preact';
+import { h, render } from 'preact';
 import Widget from './widget';
 import {defaultConfiguration} from './default-configuration';
 
@@ -30,12 +30,12 @@ function injectChat() {
             root
         );
 
-        try {
-            const request = new XMLHttpRequest();
-            request.open('POST', server + '/usage-start?host=' + host);
-            if (request.overrideMimeType) request.overrideMimeType('text/plain');
-            request.send(null);
-        } catch (e) { /* Fail silently */ }
+        // try {
+        //     const request = new XMLHttpRequest();
+        //     request.open('POST', server + '/usage-start?host=' + host);
+        //     if (request.overrideMimeType) request.overrideMimeType('text/plain');
+        //     request.send(null);
+        // } catch (e) { /* Fail silently */ }
 
     }
 

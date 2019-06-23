@@ -6,7 +6,7 @@
     "node": "--lts=dubnium"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon -e js -x node -r dotenv/config server.js",
     "server": "node server.js",
     "postinstall": "npm run build",
     "dev": "npm run start http://localhost:3000/demo.html & node devServer.js",
@@ -18,8 +18,7 @@
     "Ido Cohen (http://github.com/idoco)"
   ],
   "devDependencies": {
-    "webpack-bundle-analyzer": "^3.3.2",
-    "webpack-dev-server": "^3.1.11"
+    "dotenv": "^8.0.0"
   },
   "dependencies": {
     "babel-core": "^6.0.20",
@@ -40,6 +39,6 @@
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0",
     "store": "^1.3.20",
-    "webpack": "^4.35.0"
+    "webpack": "^1.14.0"
   }
 }
