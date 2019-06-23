@@ -1,5 +1,5 @@
 const request = require('request');
-const cors = require('cors');
+// const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 const sessions = {}
 const buffer = {}
-const historyIds = []
+// const historyIds = []
 
 // handle admin Telegram messages
 app.post(`/hook/${process.env.TELEGRAM_TOKEN}`, function(req, res) {
@@ -71,14 +71,14 @@ io.on('connection', function(socket) {
     console.log('on register')
     let userId = registerMsg.userId;
     let chatId = registerMsg.chatId;
-    let messageReceived = false;
+    // let messageReceived = false;
 
     sessions[userId] = socket.id
 
-    if (historyIds.indexOf(userId) > -1) {
-      messageReceived = true;
-      sendTelegramMessage(chatId, `${userId}: re-opened chat`, null, true);
-    }
+    // if (historyIds.indexOf(userId) > -1) {
+    //   messageReceived = true;
+    //   sendTelegramMessage(chatId, `${userId}: re-opened chat`, null, true);
+    // }
 
     if (buffer[userId]) {
       const buffered = buffer[userId];
@@ -105,16 +105,15 @@ io.on('connection', function(socket) {
       sendTelegramMessage(chatId, `${userId}: ${msg.text}`);
     });
 
-    socket.on('disconnect', function(){
+    socket.on('disconnect', function() {
       // console.log('on disconnect')
-      if (historyIds.indexOf(userId) === -1) historyIds.push(userId)
-      if (messageReceived) {
-        sendTelegramMessage(chatId, `${userId}: has left`, null, true);
-      }
+      // if (historyIds.indexOf(userId) === -1) historyIds.push(userId)
+      // if (messageReceived) {
+      //   sendTelegramMessage(chatId, `${userId}: has left`, null, true);
+      // }
       delete sessions[userId]
     });
   });
-
 });
 
 function sendTelegramMessage(chatId, text, parseMode, disableNotification = false) {
