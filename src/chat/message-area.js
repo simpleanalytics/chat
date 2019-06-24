@@ -27,7 +27,7 @@ export default class MessageArea extends Component {
                                 <p>{name ? name + ': ' + text : text}</p>
                                 { (props.conf.displayMessageTime) ?
                                     <div>
-                                        <a class="info" href="https://github.com/idoco/intergram" target="_blank">
+                                        <a class="info" href="https://github.com/simpleanalytics/chat" target="_blank">
                                             via Telegram
                                         </a>
                                         <div class="time">
