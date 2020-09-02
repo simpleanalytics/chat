@@ -7,7 +7,7 @@ export const defaultConfiguration = {
   introMessage: "Hello! How can we help?",
   introMessageBalloon: "Hello! How can we help?",
   closedChatAvatarUrl:
-    "https://cdn.simpleanalytics.io/images/adriaan-small.jpg",
+    "https://assets.simpleanalytics.com/images/adriaan-small.jpg",
   autoResponse: "Looking for Adriaan or Şamil (this might take a minute)",
   autoNoResponse:
     "They don't seem to answer within 60 seconds. This chat is anonymous so please leave your email address so they can " +
@@ -17,5 +17,5 @@ export const defaultConfiguration = {
   mainColor: "#FF4F64",
   alwaysUseFloatingButton: false,
   desktopHeight: 450,
-  desktopWidth: 300
+  desktopWidth: 300,
 };
