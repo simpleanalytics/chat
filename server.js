@@ -22,9 +22,9 @@ app.post(`/hook`, function (req, res) {
     const text = message.text || "";
     const reply = message.reply_to_message;
 
-    console.log(JSON.stringify(req.body));
+    // console.log(JSON.stringify(req.body));
 
-    if (/adriaan/gi.test(name)) name = "Adriaan";
+    if (/(adriaan|simple)/gi.test(name)) name = "Adriaan";
 
     if (text.startsWith("/start")) {
       // console.log('/start chatId ' + chatId);
